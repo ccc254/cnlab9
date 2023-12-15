@@ -2,11 +2,19 @@
 #include<iomanip> //For using setw(), setprecision(), ...
 using namespace std;
 
-int main(){	
-	cout << "Enter initial loan: ";
-	cout << "Enter interest rate per year (%): ";
-	cout << "Enter amount you can pay per year: ";
 
+int main(){
+	double x;
+	double y;
+	double z;	
+	cout << "Enter initial loan: ";
+	cin >> x;
+	cout << "Enter interest rate per year (%): ";
+	cin >> y;
+	cout << "Enter amount you can pay per year: ";
+	cin >> z;
+
+	
 	//use 'setw' to set width of table and 'left' to set left-alignment
 	//you can change input argument of 'setw()' to see the effect
 	//Try to change from 'left' to 'right' and see the effect
@@ -18,16 +26,27 @@ int main(){
 	cout << setw(13) << left << "NewBalance";
 	cout << "\n";
 	
+	int i=0;
+	while(x>0){
 	//use 'fixed' and 'setprecision' to fix the number of decimal digits for displaying
 	//you can change input argument of 'setprecision()' to see the effect
 	cout << fixed << setprecision(2); 
-	cout << setw(13) << left << 1; 
-	cout << setw(13) << left << 1000.0;
-	cout << setw(13) << left << 50.0;
-	cout << setw(13) << left << 1050.0;
-	cout << setw(13) << left << 100.0;
-	cout << setw(13) << left << 950.0;
-	cout << "\n";	
-	
+	cout << setw(13) << left << i+1;
+	i++;
+	cout << setw(13) << left << x;
+	cout << setw(13) << left << x*y/100;
+	x=x+(x*y/100);
+	cout << setw(13) << left << x;
+	if(x>z){
+	cout << setw(13) << left << z;
+	}
+	else{ 
+	    z=x;
+	    cout << setw(13) << left << z;
+	    }
+	    x=x-z;
+	    cout << setw(13) << left << x;
+    	cout << "\n";
+	}
 	return 0;
 }
